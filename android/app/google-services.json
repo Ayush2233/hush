@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "208017803735",
+    "project_id": "hush-16d89",
+    "storage_bucket": "hush-16d89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208017803735:android:66f8785f2947290268e392",
+        "android_client_info": {
+          "package_name": "com.example.hush_dart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208017803735-rkt7p7dahhqsfg5hl14dbcqtei5gc1k4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6Aa5LXiXJsgNIwM0_sadX-iQmyn2QS2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "208017803735-rkt7p7dahhqsfg5hl14dbcqtei5gc1k4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

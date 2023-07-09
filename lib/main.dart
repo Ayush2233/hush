@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'anotherday.dart'; // Import the AnotherDayPage
@@ -9,6 +11,7 @@ class JournalEntryPage extends StatefulWidget {
 
 class _JournalEntryPageState extends State<JournalEntryPage> {
   TextEditingController _textEditingController = TextEditingController();
+  TextEditingController _titlecontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +41,13 @@ class _JournalEntryPageState extends State<JournalEntryPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
+              controller: _titlecontroller,
+              maxLines: null,
+              decoration: InputDecoration(
+                hintText: 'Title',
+              ),
+            ),
+            TextField(
               controller: _textEditingController,
               maxLines: null,
               decoration: InputDecoration(
@@ -47,11 +57,18 @@ class _JournalEntryPageState extends State<JournalEntryPage> {
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                String journalEntry = _textEditingController.text;
+                FirebaseFirestore.instance.collection('notes').add(
+                  {
+                    'title':_titlecontroller.text,
+                    'body':_textEditingController.text,
+                    'date':DateTime.now()
+                  }
+                );
                 // Do something with the journal entry (e.g., save it)
                 Navigator.pop(context); // Go back to the previous screen
               },
               child: Text('Save'),
+
             ),
           ],
         ),
@@ -60,8 +77,11 @@ class _JournalEntryPageState extends State<JournalEntryPage> {
   }
 }
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MaterialApp(
+
     home: MyApp(),
   ));
 }
